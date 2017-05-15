@@ -1,0 +1,25 @@
+<!-- jQuery -->
+<script src="$!{CONTEXT_PATH}/static/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Sweet-Alert  -->
+<script src="$!{CONTEXT_PATH}/static/plugins/sweetalert/sweetalert.min.js"></script>
+<!-- toast -->
+<script src="$!{CONTEXT_PATH}/static/plugins/toast-master/js/jquery.toast.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="$!{CONTEXT_PATH}/static/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- 自定义swal  -->
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myswal.js"></script>
+<!-- 自定义toast  -->
+<script src="$!{CONTEXT_PATH}/static/javascript/common/mytoast.js"></script>
+<!-- 自定义ajax  -->
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myajax.js"></script>
+<!-- 自定义函数  -->
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myself.js"></script>
+<!--Wave Effects -->
+<script src="$!{CONTEXT_PATH}/static/js/waves.js"></script>
+<!--分页 -->
+<script src="$!{CONTEXT_PATH}/static/js/pagination_m.js"></script>
+<!-- 日期选择 -->
+<script src="$!{CONTEXT_PATH}/static/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Magnific popup JavaScript 图片展示 -->
+<script src="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>

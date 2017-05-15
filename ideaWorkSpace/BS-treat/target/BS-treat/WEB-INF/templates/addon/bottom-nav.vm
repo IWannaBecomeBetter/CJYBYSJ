@@ -1,0 +1,43 @@
+<nav class="mui-bar mui-bar-tab">
+    <a class="mui-tab-item mui-active" href="/treat/home">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item" href="/treat/service">
+        <span class="mui-icon mui-icon-bars"></span>
+        <span class="mui-tab-label">服务</span>
+    </a>
+    <a class="mui-tab-item" href="/order/myOrder">
+        <span class="mui-icon mui-icon-list"></span>
+        <span class="mui-tab-label">订单</span>
+    </a>
+    <a class="mui-tab-item" href="/treat/mine">
+        <span class="mui-icon mui-icon-person"></span>
+        <span class="mui-tab-label">我的</span>
+    </a>
+</nav>
+<script>
+    $(function () {
+        var currentUrlPath = window.location.pathname;
+        var as = $('.mui-bar-tab').find("a");
+        $.each(as, function (k, v) {
+            $(v).removeClass("mui-active");
+        });
+        $.each(as, function (k, v) {
+            if (currentUrlPath.indexOf($(v).attr("href"))>=0) {
+                $(v).addClass("mui-active");
+            }
+        });
+
+        var activeTab = $('a.mui-active').attr('href');
+        //选项卡点击事件
+        mui('.mui-bar-tab').on('tap', 'a', function(e) {
+            var targetTab = this.getAttribute('href');
+            if (targetTab == activeTab) {
+                return;
+            }else(
+                    location.href = base + targetTab
+            )
+        });
+    })
+</script>

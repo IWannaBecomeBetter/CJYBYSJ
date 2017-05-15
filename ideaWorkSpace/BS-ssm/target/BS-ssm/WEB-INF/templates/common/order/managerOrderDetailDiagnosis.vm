@@ -1,0 +1,14 @@
+<!-- 诊断证明-->
+<!-- .row -->
+
+<div class="col-sm-12">
+    <h3 class="box-title m-b-0">诊断证明</h3>
+    <div class="zoom-gallery m-t-30" id="diagnosisList">
+
+    </div>
+</div>
+
+
+<!-- Magnific popup JavaScript -->
+<script src="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("sys_param.vm")
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>居家康复服务平台</title>
+    #parse("addon/commonCss.vm")
+</head>
+<body>
+<!-- Preloader -->
+<div class="preloader">
+  <div class="cssload-speeding-wheel"></div>
+</div>
+$screen_content
+    #parse("addon/commonJs.vm")
+
+</body>
+</html>

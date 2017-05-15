@@ -1,0 +1,19 @@
+
+<!-- table 列表分页布局 -->
+
+<!-- Preloader -->
+<div class="preloader_list" hidden>
+    <div class="cssload-speeding-wheel"></div>
+</div>
+
+<div class="table_area">
+
+    <input type="hidden" id="p_number" value="">
+
+    <div class="queryResultList" id="queryResultList">
+
+    </div>
+
+    #paginationDiv()
+
+</div>

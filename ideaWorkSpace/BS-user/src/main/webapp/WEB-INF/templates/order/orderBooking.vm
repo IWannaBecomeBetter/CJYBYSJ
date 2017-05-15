@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复患者端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <link rel="stylesheet" type="text/css" href="$!{CONTEXT_PATH}/static/mui/picker/mui.picker.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="$!{CONTEXT_PATH}/static/mui/picker/mui.poppicker.css"></link>
+    <style>
+        .image-item {
+            width: 65px;
+            height: 65px;
+            /*background-image: url(../images/iconfont-tianjia.png);*/
+            background-size: 100% 100%;
+            display: inline-block;
+            position: relative;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: solid 1px #e8e8e8;
+            vertical-align: top;
+        }
+
+        .image-close {
+            position: absolute;
+            display: inline-block;
+            right: -6px;
+            top: -6px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 12px;
+            background-color: #FF5053;
+            color: #f3f3f3;
+            border: solid 1px #FF5053;
+            font-size: 9px;
+            font-weight: 200;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">预约下单</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 0px">
+    <from id="orderBooking">
+        <ul class="mui-table-view mui-input-group">
+            <input type="hidden" id="typeId" name="typeId" value="$!{type}">
+            <li class="mui-input-row">
+                <label>患者姓名：</label>
+                <input id="name" name="name" type="text" value="$!{patient.name}" class="mui-input-clear mui-input"
+                       placeholder="患者姓名">
+            </li>
+            <li class="mui-input-row">
+                <label>联系方式：</label>
+                <input id="telephone" name="telephone" type="number" value="$!{account.telephone}"
+                       class="mui-input-clear mui-input" placeholder="联系方式">
+            </li>
+            <li class="mui-input-row">
+                <label>年龄：</label>
+                <input id="age" name="age" type="number" value="$!{patient.age}" class="mui-input-clear mui-input"
+                       placeholder="年龄">
+            </li>
+            <li class="mui-input-row">
+                <input id="sex" name="sex" value="$!{patient.sex}" hidden>
+                <label>性别：</label>
+                <div style="float: left;width: 65%">
+                    <div class="mui-input-row mui-radio mui-left" style="display: inline-block;width: 50%；float: left;">
+                        <label>男</label>
+                        <input id="male" name="radio1" type="radio">
+                    </div>
+                    <div class="mui-input-row mui-radio mui-left" style="display: inline-block;width: 50%；float: left;">
+                        <label>女</label>
+                        <input id="female" name="radio1" type="radio">
+                    </div>
+                </div>
+            </li>
+            <li class="mui-input-row">
+                <label>地址：</label>
+                <input id="address" type="text" class="mui-input-clear mui-input" placeholder="地址"></input>
+            </li>
+            <ul class="mui-table-view">
+                <li style="padding-top: 10px;padding-left: 10px">
+                    <label>请选择上门时间段</label>
+
+                </li>
+                <li class="mui-table-view-cell">
+                    <div>
+                        <input type="text" id="visitTime" name="visitTime" class="form-control" placeholder="请选择时间段"
+                               readonly style="background-color: #FFF"/>
+                        <a data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"},{"text":"晚上","value":"晚上"}]},"labels":["年", "月", "日", "时段", "分"]}'
+                           class="date mui-navigate-right"></a>
+                    </div>
+                </li>
+            </ul>
+            <li style="padding-top: 10px;padding-left: 10px">
+                <label>主要情况：</label>
+                <div>
+                    <textarea rows="6" id="mainConditions" name="mainConditions" class="form-control"
+                              placeholder="请描述医院诊断、目前状态等..."></textarea>
+                </div>
+            </li>
+            <ul class="mui-table-view" >
+                <li class="mui-table-view-cell">
+                    <label>诊断证明上传：</label>
+                    <div class="col-xs-10 files"  id="pickfiles" style="padding-bottom: 4px;">
+
+                    </div>
+
+                </li>
+            </ul>
+            <input type="hidden" name="fileIds" class="inputServer">
+        </ul>
+    </from>
+</div>
+<div class="mui-content-padded">
+    <button id="booking" style="border-radius: 15px" type="button" class="mui-btn mui-btn-block mui-btn-success">确认
+    </button>
+</div>
+</body>
+</html>
+#parse("addon/uploadjs.vm")
+<script src="$!{CONTEXT_PATH}/static/mui/picker/mui.picker.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/mui/picker/mui.poppicker.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/order/orderBooking.js"></script>

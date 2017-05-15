@@ -1,0 +1,17 @@
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" type="text/css" href="$!{CONTEXT_PATH}/static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="$!{CONTEXT_PATH}/static/css/theme.css">
+<link rel="stylesheet" href="$!{CONTEXT_PATH}/static/font/css/font-awesome.css">
+<link rel="stylesheet" href="$!{CONTEXT_PATH}/static/css/myself.css">
+<link rel="stylesheet" href="$!{CONTEXT_PATH}/static/css/kitchen.css">
+<!--alerts CSS -->
+<link href="$!{CONTEXT_PATH}/static/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+<!-- toast CSS -->
+<link href="$!{CONTEXT_PATH}/static/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+<!-- 日期控件-->
+<link href="$!{CONTEXT_PATH}/static/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+<!-- Popup CSS -->
+<link href="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/magnific-popup.css" rel="stylesheet">
+
+
+

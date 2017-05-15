@@ -1,0 +1,139 @@
+#set($layout = 'manager_layout.vm')
+#parse("sys_param.vm")
+<link rel="stylesheet" href="$!{CONTEXT_PATH}/static/plugins/bower_components/jquery-wizard-master/libs/formvalidation/formValidation.min.css">
+<link href="$!{CONTEXT_PATH}/static/plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<link href="$!{CONTEXT_PATH}/static/plugins/bower_components/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="$!{CONTEXT_PATH}/static/plugins/bower_components/select2/select2.min.css">
+<!-- Page Content -->
+<form id="orderDetail" method="post">
+    <input name="id" value="$!{request.getParameter("orderId")}" hidden>
+</form>
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">订单详情</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">业务菜单</a></li>
+            <li><a href="#">订单</a></li>
+            <li class="active">订单详情</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- .row -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="vtabs myvtab_box">
+            <div class="card_box col-md-2" >
+                <ul class="nav tabs-vertical card_content" id="detailTab">
+                    <li class="tab active"><a data-toggle="tab" href="#info" aria-expanded="true">
+                        <span class="visible-xs"><i class="ti-home"></i></span>
+                        <span class="hidden-xs">基本信息</span>
+                    </a>
+                    </li>
+                    <li class="tab"><a data-toggle="tab" href="#link" aria-expanded="false">
+                        <span class="visible-xs"><i class="ti-user"></i></span>
+                        <span class="hidden-xs">联系人信息</span>
+                    </a>
+                    </li>
+                    <li class="tab"><a aria-expanded="false" data-toggle="tab" href="#time">
+                        <span class="visible-xs"><i class="ti-email"></i></span>
+                        <span class="hidden-xs">预约时间段</span>
+                    </a>
+                    </li>
+                    <li class="tab"><a data-toggle="tab" href="#diagnosis" aria-expanded="true">
+                        <span class="visible-xs"><i class="ti-home"></i>
+                        </span> <span class="hidden-xs">诊断证明</span> </a>
+                    </li>
+                    <li class="tab"><a data-toggle="tab" href="#status" aria-expanded="false">
+                        <span class="visible-xs"><i class="ti-user"></i></span>
+                        <span class="hidden-xs">订单状态跟踪</span> </a>
+                    </li>
+                    <li class="tab"><a aria-expanded="false" data-toggle="tab" href="#assessment">
+                        <span class="visible-xs"><i class="ti-email"></i></span>
+                        <span class="hidden-xs">评估单</span> </a>
+                    </li>
+                    <li class="tab"><a data-toggle="tab" href="#plan" aria-expanded="true">
+                        <span class="visible-xs"><i class="ti-home"></i></span>
+                        <span class="hidden-xs">康复计划</span> </a>
+                    </li>
+                    <li class="tab"><a data-toggle="tab" href="#summary" aria-expanded="true">
+                        <span class="visible-xs"><i class="ti-home"></i></span>
+                        <span class="hidden-xs">小结|总结</span> </a></li>
+                    <li class="tab"><a data-toggle="tab" href="#exercise" aria-expanded="false">
+                        <span class="visible-xs"><i class="ti-user"></i></span>
+                        <span class="hidden-xs">康复日程项</span> </a>
+                    </li>
+                    <li class="tab"><a aria-expanded="false" data-toggle="tab" href="#relativeperson">
+                        <span class="visible-xs"><i class="ti-email"></i></span>
+                        <span class="hidden-xs">相关人员信息</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card_box col-md-9">
+                <div class="tab-content card_content col-md-12">
+                    <div id="info" class="tab-pane active">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailInfo.vm')
+                        </div>
+                    </div>
+                    <div id="link" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailLink.vm')
+                        </div>
+                    </div>
+                    <div id="time" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailTime.vm')
+                        </div>
+                    </div>
+                    <div id="diagnosis" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailDiagnosis.vm')
+                        </div>
+                    </div>
+                    <div id="status" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailStatus.vm')
+                        </div>
+                    </div>
+                    <div id="assessment" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailAssessment.vm')
+                        </div>
+                    </div>
+                    <div id="plan" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailPlan.vm')
+                        </div>
+                    </div>
+                    <div id="summary" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailSummary.vm')
+                        </div>
+                    </div>
+                    <div id="exercise" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailExercise.vm')
+                        </div>
+                    </div>
+                    <div id="relativeperson" class="tab-pane">
+                        <div class="col-md-12">
+                            #parse('common/order/managerOrderDetailRelativeperson.vm')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="$!{CONTEXT_PATH}/static/plugins/bower_components/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="$!{CONTEXT_PATH}/static/plugins/bower_components/select2/select2.full.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/plugins/bower_components/select2/i18n/zh-CN.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/order/templateHelper.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/order/orderinfo/orderDetail.js"></script>

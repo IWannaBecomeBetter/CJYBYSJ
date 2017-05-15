@@ -1,0 +1,87 @@
+#set($layout = 'manager_layout.vm')
+#parse('sys_param.vm')
+
+
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Upload</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">demo</a></li>
+            <li class="active">upload</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-xs-12">
+        <div class="white-box">
+            <h3 class="box-title">单选</h3>
+            <a href="javascript: void (0)" class="radioUpload" id="radioUpload"
+               data-serverid="U2016071810591624995"
+            ></a>
+            <input type="hidden" name="file" id="file">
+            <button class="btn btn-info" id="radioBtn">上传</button>
+        ##            <input type="file" class="dropify">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-xs-12">
+        <div class="white-box">
+            <h3 class="box-title">多选</h3>
+            <div id="multiUpload"
+                 data-serverids='["U2016071811083295695","U2016071811303573596"]'
+            ></div>
+            <input type="hidden" name="files" id="files">
+            <button class="btn btn-info" id="multiBtn">上传</button>
+        </div>
+    </div>
+</div>
+
+#parse('addon/myupload.vm')
+##<script src="$!{CONTEXT_PATH}/static/plugins/bower_components/dropify/dist/js/dropify.js?v=$JS_VERSION"></script>
+
+<script>
+    var domain = '$!{domain}';  //必须
+    var uploader;
+    var multiUploader;
+    $(function () {
+        //创建单选控件
+        uploader = new iCare.radioUpload({
+            browse_button: 'radioUpload', //选择图片按钮
+            file_input: 'file' //存储文件id的隐藏域
+        });
+
+        //绑定事件
+        $('#radioBtn').on('click', function () {
+            //单选控件上传
+            if (!uploader.isEmpty()){
+                uploader.start(function () {
+                    console.log($('#file').val());
+                });
+            }
+        });
+
+        multiUploader = new iCare.multiUpload({
+            browse_button: 'multiUpload',   //选择图片按钮(区域)
+            file_input: 'files', //存储文件id的隐藏域
+            return_type: 'json'  //file_input的val值格式,'json'为'["a","b","c"]','string'为'a,b,c',默认为'json'
+        });
+
+        $('#multiBtn').on('click',function(){
+            //多选控件上传
+            if (!multiUploader.isEmpty()){  //判断是否为空
+                multiUploader.start(function(){
+                    console.log($('#files').val());
+                });
+            }
+
+        });
+    });
+
+</script>

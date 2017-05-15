@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复康复师端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <link rel="stylesheet" href="$!{CONTEXT_PATH}/static/mui/examples/hello-mui/css/icons-extra.css">
+    <style>
+        * { touch-action: none; }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">服务</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 50px">
+    <div class="mui-card service" data-type="1">
+        <!--页眉，放置标题-->
+        <div class="mui-card-header mui-card-media">
+            <img src="$!{CONTEXT_PATH}/static/img/9.jpg" />
+            <div class="mui-media-body">
+                脑瘫康复
+                <p>发表于 2016-06-30 15:30</p>
+            </div>
+        </div>
+        <!--内容区-->
+        <div class="mui-card-content">
+            <img src="$!{CONTEXT_PATH}/static/img/13.jpg" alt="" width="100%"/>
+        </div>
+        <!--页脚，放置补充信息或支持的操作-->
+        <div class="mui-card-footer">脑瘫康复目前来看综合治疗效果最好，讲究医疗康复、教育康复、职业康复、社会康复，具体内容包括药物治疗、手术治疗、家庭治疗、多领域复合诊疗体系、康复治疗等多学科综合治疗方法。</div>
+    </div>
+    <div class="mui-card service" data-type="2">
+        <!--页眉，放置标题-->
+        <div class="mui-card-header mui-card-media">
+            <img src="$!{CONTEXT_PATH}/static/img/9.jpg" />
+            <div class="mui-media-body">
+                脑卒中康复
+                <p>发表于 2016-06-30 15:30</p>
+            </div>
+        </div>
+        <!--内容区-->
+        <div class="mui-card-content">
+            <img src="$!{CONTEXT_PATH}/static/img/14.jpg" alt="" width="100%"/>
+        </div>
+        <!--页脚，放置补充信息或支持的操作-->
+        <div class="mui-card-footer">“脑卒中”（cerebral stroke）又称“中风”、“脑血管意外”（cerebralvascular accident，CVA）。是一种急性脑血管疾病，是由于脑部血管突然破裂或因血管阻塞导致血液不能流入大脑而引起脑组织损伤的一组疾病，包括缺血性和出血性卒中。</div>
+    </div>
+</div>
+    #parse("addon/bottom-nav.vm")
+</body>
+</html>
+<script src="$!{CONTEXT_PATH}/static/javascript/treat/service.js"></script>

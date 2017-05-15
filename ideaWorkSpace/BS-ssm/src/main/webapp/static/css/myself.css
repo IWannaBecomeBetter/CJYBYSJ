@@ -1,0 +1,78 @@
+#line-chart {
+    height:300px;
+    width:800px;
+    margin: 0px auto;
+    margin-top: 1em;
+}
+.brand { font-family: georgia, serif; }
+.brand .first {
+    color: #ccc;
+    font-style: italic;
+}
+.brand .second {
+    color: #fff;
+    font-weight: bold;
+}
+
+.searchArea {
+    padding: 10px 0px 20px 0px;
+}
+
+.searchArea .formdiv {
+    margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+    .searchArea .form-group {
+        margin-top: 10px;
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+
+    .searchArea .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        min-width: 200px;
+    }
+}
+
+/*下划线*/
+.block-line {
+    margin-top: 5px;
+    padding-bottom: 3px;
+    border-bottom: solid 1px #e0e0e0;
+    padding-left: 0px;
+    width: 100%;
+    margin-left: 7.5px;
+}
+
+@media (min-width: 768px) {
+    .block-line {
+        width: 40%;
+    }
+}
+
+.searchArea form {
+    display: inline-block;
+}
+
+.searchArea button.upload {
+    background-color: #f9a36f;
+    border-color: #f9a36f;
+    margin-right: 200px;
+}
+
+.searchArea button > i {
+    margin-right: 5px;
+}
+
+.searchArea button {
+    margin-top: 10px;
+    border-radius: 0px;
+}
+
+.searchArea button.more {
+    margin-left: 10px;
+}

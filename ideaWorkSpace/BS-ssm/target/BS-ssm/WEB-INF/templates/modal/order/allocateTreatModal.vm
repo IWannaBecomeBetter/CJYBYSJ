@@ -1,0 +1,51 @@
+<!-- 分配康复师 -->
+<div class="modal fade allocateTreat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">分配康复师</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal_wrap">
+                    <div id="treatDiv">
+                        <input type="hidden" name="orderId">
+                        <input type="hidden" name="accountId">
+
+                        <div>
+                            <div class="tab-pane fade active in" id="select_treat">
+
+                                    <div class="paginationDiv">
+                                    <!--search  area-->
+                                    <div class="searchArea">
+                                        <form action="$!{CONTEXT_PATH}/order/treatList" method="get" id="treatSearchForm">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" style="margin-bottom: 0px" name="name" placeholder="请输入康复管家姓名或简拼"/>
+                                                <button class="btn btn-default btn-sm" style="margin-top: 0px" type="button" onclick="qryData('treatSearchForm')">搜索</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="list-box clearfix queryResultList" id="queryResultList">
+
+                                    </div>
+
+                                    #paginationDiv()
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border">
+                <button type="button" class="btn btn-success waves-effect" onclick="allocate()">
+                    确认
+                </button>
+                <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

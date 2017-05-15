@@ -1,0 +1,7 @@
+#set($CONTEXT_PATH = ${rc.contextPath})
+#set($SERVER_PATH = "http://" + ${request.serverName} + ":" + ${request.serverPort} + $!{CONTEXT_PATH})
+#set($JS_VERSION = "1.0.1")
+#set($TITLE = "居家康复")
+<script>
+	var base = '$!{CONTEXT_PATH}';
+</script>

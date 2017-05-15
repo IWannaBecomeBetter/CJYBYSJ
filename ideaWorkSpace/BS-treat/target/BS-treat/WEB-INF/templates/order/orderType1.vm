@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复康复师端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <style>
+        .order-bar-submit {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background: #FF9913;
+            height: 44px;
+            line-height: 44px;
+            padding: 0px 140px 0px 15px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .order-submit-btn {
+            position: absolute;
+            width: 80px;
+            background-color: #ff7d13;
+            text-align: center;
+            right: 0px;
+            color: #fff;
+        }
+
+        .mui-content p {
+            text-indent: 2em;
+            margin: 10px;
+            font-size: 10px;
+            background-color: #fff;
+            padding: 8px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">脑瘫康复</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 50px">
+    <input id="orderType" value="1" hidden>
+    <div>
+        <h3>病因</h3>
+        <p>引起脑性瘫痪的原因很多，但找不到原因者可能达1/3以上。有时一些病例也可能存在多种因素。</p>
+
+        <p>产前因素最常见，包括遗传和染色体疾病、先天性感染、脑发育畸形或发育不良、胎儿脑缺血缺氧致脑室周围白质软化或基底节受损等。围产因素指发生在分娩开始到生后一周内的脑损伤，包括脑水肿、新生儿休克、脑内出血、败血症或中枢神经系统感染、缺血缺氧性脑病等。围产因素可能是引起早产儿脑瘫的重要原因。晚期新生儿以后的因素包括从1周至3或4岁间发生的中枢神经系统感染、脑血管病、头颅外伤、中毒等各种引起的非进行性脑损伤的病因。</p>
+
+        <p>早产和宫内发育迟缓虽然不是脑瘫的直接原因，但它们是脑瘫的重要的高危因素。母亲宫内炎症或绒毛膜羊膜炎，作为一项潜在的危险因素已经越来越被引起重视。</p>
+    </div>
+    <div>
+        <h3>康复内容</h3>
+        <p>（1）运动康复包括粗大运动、精细运动、平衡能力和协调性训练。</p>
+
+        <p>（2）生活自理能力训练和作业疗法以达到训练手的功能。</p>
+
+        <p>（3）并存障碍治疗如及时控制癫痫发作，矫治视觉、听觉和口面功能障碍，改善和发展认知功能，进行语言训练。</p>
+
+        <p>（4）培养良好心理素质、矫治情绪、纠正行为异常，增加脑瘫患儿克服困难的信心，培养社会交往能力。</p>
+
+        <p>（5）促进智力发育，接受教育，学习文化。为将来参与社会活动创造条件。</p>
+
+        <p>（6）使用矫形器具，对已发生严重挛缩和畸形者可予骨科手术矫治。</p>
+    </div>
+</div>
+</body>
+</html>
+<script src="$!{CONTEXT_PATH}/static/javascript/order/orderType1.js"></script>

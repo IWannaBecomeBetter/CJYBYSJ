@@ -1,0 +1,88 @@
+<script type="text/javascript">
+
+    var isOpenGeetest = false;
+    /**
+     * hzc
+     * 封装极验滑动验证码
+     * element：触发弹出验证码的元素id 带# 例如 #loginbtn
+     * showElement:显示验证码的区域id 带#  例如#zone
+     * callback:回调函数  带一个参数 返回是否校验成功 成功：success  失败：fail
+     * formValidate : 调用验证码之前的必填项检查函数，并返回请求参数
+     * url：验证码二次校验地址  例如注册页面，此地址即为发送手机验证码地址，在此请求地址内检查是否通过了滑动验证
+     */
+    var geetestModule = (function(mod) {
+
+        mod.element;
+        mod.showElement;
+        mod.callback;
+        mod.formValidate;
+        mod.url;
+
+        mod.initGeetest = function(element,showElement,callback,formValidate,url){
+            mod.element = element;
+            mod.showElement = showElement;
+            mod.callback = callback;
+            mod.formValidate = formValidate;
+            mod.url = url;
+            $.ajax({
+                // 获取id，challenge，success（是否启用failback）
+                url: base + "/geetest/init",
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    // 使用initGeetest接口
+                    // 参数1：配置参数
+                    // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+                    initGeetest({
+                        gt: data.gt,
+                        challenge: data.challenge,
+                        product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                        offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                    }, mod.handlerPopup);
+                }
+            });
+        };
+
+        mod.handlerPopup = function (captchaObj) {
+
+            $(mod.element).click(function () {
+                var validate = captchaObj.getValidate();
+                if (!validate) {
+                    elert('请先完成验证！');
+                    return;
+                }
+
+                var data = {
+                    // 二次验证所需的三个值
+                    geetest_challenge: validate.geetest_challenge,
+                    geetest_validate: validate.geetest_validate,
+                    geetest_seccode: validate.geetest_seccode
+                };
+
+                var extendData = mod.formValidate();
+                if(extendData==false){
+                    return;
+                }
+                $.extend(data,extendData);
+
+                $.ajax({
+                    url: base + mod.url, // 进行二次验证
+                    type: "post",
+                    dataType: "json",
+                    data:data,
+                    success: function (data) {
+                        mod.callback(data);
+                    }
+                });
+            });
+
+            // 弹出式需要绑定触发验证码弹出按钮
+            captchaObj.bindOn(mod.element);
+            // 将验证码加到id为captcha的元素里
+            captchaObj.appendTo(mod.showElement);
+        };
+
+        return mod;
+
+    })(window.geetestModule || {});
+</script>

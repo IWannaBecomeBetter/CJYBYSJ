@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="feedback">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>居家康复患者端</title>
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <style>
+        .mui-input-row{
+            margin: 15px 15px;
+            height: 50px;
+        }
+        .mui-input-row input{
+            border-radius: 10px;
+        }
+        .mui-input-row label {
+            width: 20%;
+        }
+        .mui-input-row label~input {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">绑定邮箱</h1>
+</header>
+<div class="mui-content">
+    <p style="margin: 10px 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 绑定邮箱后，您可以根据邮箱及相应的账户信息重新找回您的密码，因此请慎重填写</p>
+    <div style="margin: 10px 15px">
+        <form class="mui-input-group">
+            <div class="mui-input-row">
+                <label style="width: 20%"><span class="mui-icon mui-icon-email"></span></label>
+                <input style="width: 80%;border-radius: 10px;" type="email" id="myemail"  class="mui-input-clear" value="$!{account.email}" placeholder="请输入邮箱" />
+            </div>
+        </form>
+    </div>
+    <div class="mui-button-row" style="margin: 10px 15px;">
+        <button id="bindEmail" type="button" style="border-radius: 15px" class="mui-btn mui-btn-block mui-btn-success">
+            #if($!{account.email})
+                修改
+            #else
+                绑定
+            #end
+        </button>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="$!{CONTEXT_PATH}/static/javascript/patient/bindemail.js"></script>

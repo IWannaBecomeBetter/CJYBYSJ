@@ -1,0 +1,49 @@
+#set($layout = 'manager_list_layout.vm')
+#parse("sys_param.vm")
+<!-- Page Content -->
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">康复师拒单信息列表</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">业务菜单</a></li>
+            <li><a href="#">退单审核</a></li>
+            <li class="active">康复师拒单</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="white-box">
+
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped">
+                    <caption>
+                        <form id="searchForm">
+                            #parse('manager/refuse/common/refuse_search.vm')
+                        </form>
+                    </caption>
+                    <thead>
+
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal 弹框-->
+#parse('modal/refuse/auditRefuseModal.vm')
+<!-- /.row -->
+<!-- /#wrapper -->
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/refuse/common/refuseList.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/refuse/refuseModal.js"></script>
+<script>
+    $(function () {
+        refuseList.init(3);//康复师退单
+    });
+</script>

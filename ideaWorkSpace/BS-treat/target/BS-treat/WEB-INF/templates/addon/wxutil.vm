@@ -1,0 +1,146 @@
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    // 微信注册
+    function wx_config(ready, fail) {
+        if(!isWeChat) {
+            return;
+        }
+
+        var pageUrl = window.location.href.split('#')[0];
+        pageUrl = pageUrl.replace(/\&/g, '%26');
+
+        $.ajax({
+            url: '$!{CONTEXT_PATH}/weChat/getWeChatConfigParam?url=' + pageUrl,
+            type: 'get',
+            success: function(data) {
+                if(data.flag) {
+                    data = data.data;
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: data.appId, // 必填，公众号的唯一标识
+                        timestamp: data.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                        signature: data.signature,// 必填，签名，见附录1
+                        jsApiList: data.jsApiList // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                } else {
+                    elert('获取jsapi_ticket失败');
+                }
+            },
+            error: function() {
+                elert('连接微信网络异常');
+            }
+        });
+
+        // 微信注册成功调用
+        wx.ready(function() {
+//            // 隐藏右上角菜单
+//            wx.hideOptionMenu();
+//
+//            // 显示刷新、分享按钮
+//            wx.showMenuItems({
+//                menuList: ['menuItem:refresh', 'menuItem:share:appMessage', 'menuItem:share:timeline', 'menuItem:share:qq', 'menuItem:share:weiboApp'] // 要显示的菜单项，所有menu项见附录3
+//            });
+
+            if(ready) {
+                ready();
+            }
+        });
+
+        // 注册失败
+        wx.error(function(res) {
+            if(fail) {
+                fail();
+            } else {
+//                elert('微信接口注册失败，请稍后再试');
+            }
+        });
+    }
+
+    // 分享到朋友圈
+    function shareTimeLine(title, link, imgUrl, trigger, success, cancel, fail) {
+        wx.onMenuShareTimeline({
+            title: title,
+            link: link,
+            imgUrl: imgUrl,
+            trigger: function (res) {
+                if(trigger) {
+                    trigger(res);
+                }
+            },
+            success: function (res) {
+                if(success) {
+                    success(res);
+                }
+            },
+            cancel: function (res) {
+                if(cancel) {
+                    cancel(res);
+                }
+            },
+            fail: function (res) {
+                if(fail) {
+                    fail(res);
+                } else {
+                    elert('分享失败，请稍后再试');
+                }
+            }
+        });
+    }
+
+    // 分享到朋友
+    function shareAppMessage(title, link, imgUrl, desc, type, dataUrl, trigger, success, cancel, fail) {
+        title = title || '';
+        link = link || '';
+        imgUrl = imgUrl || '';
+        desc = desc || '';
+        type = type || 'link';
+        dataUrl = dataUrl || '';
+
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: link, // 分享链接
+            imgUrl: imgUrl, // 分享图标
+            type: type, // 分享类型,music、video或link，不填默认为link
+            dataUrl: dataUrl, // 如果type是music或video，则要提供数据链接，默认为空
+            trigger: function (res) {
+                if(trigger) {
+                    trigger(res);
+                }
+            },
+            success: function (res) {
+                if(success) {
+                    success(res);
+                }
+            },
+            cancel: function (res) {
+                // 用户取消分享后执行的回调函数
+                if(cancel) {
+                    cancel(res);
+                }
+            },
+            fail: function (res) {
+                if(fail) {
+                    fail(res);
+                } else {
+                    elert('分享失败，请稍后再试');
+                }
+            }
+        });
+    }
+
+    function uploadImage(localId, success) {
+        wx.uploadImage({
+            localId: localId, // 需要上传的图片的本地ID，由chooseImage接口获得
+            isShowProgressTips: 1, // 默认为1，显示进度提示
+            success: function (res) {
+                var serverId = res.serverId; // 返回图片的服务器端ID
+
+                if(success) {
+                    success(serverId);
+                }
+            }
+        });
+    }
+</script>

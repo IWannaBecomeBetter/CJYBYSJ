@@ -1,0 +1,7 @@
+#set($layout = 'manager_list_layout.vm')
+#parse("sys_param.vm")
+
+<!-- Page Content -->
+<div class="content">
+</div>
+

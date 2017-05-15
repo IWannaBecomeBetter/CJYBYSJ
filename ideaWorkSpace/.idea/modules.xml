@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BS-ssm/BS-ssm.iml" filepath="$PROJECT_DIR$/BS-ssm/BS-ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BS-treat/BS-treat.iml" filepath="$PROJECT_DIR$/BS-treat/BS-treat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ideaWorkSpace.iml" filepath="$PROJECT_DIR$/.idea/ideaWorkSpace.iml" />
+    </modules>
+  </component>
+</project>

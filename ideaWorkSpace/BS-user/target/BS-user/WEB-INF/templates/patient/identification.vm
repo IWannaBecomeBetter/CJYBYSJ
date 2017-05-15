@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="ui-page-register">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>居家康复患者端</title>
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <style>
+        .mui-input-row{
+            margin: 15px 15px;
+            height: 50px;
+        }
+        .reg-content{
+            padding: 20px 0;
+        }
+        .mui-input-row input{
+            border-radius: 10px;
+        }
+
+        .iden .up_pic{
+            border-bottom: none;
+        }
+        .iden .up_pic>a{
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: 170px;
+            text-align: center;
+            border: 5px solid #CCEAFB;
+            vertical-align: top;
+            padding-top: 0px;
+        }
+        .iden .up_pic>a>p{
+            width: 100%;
+            margin: 0px;
+            font-size: .7em;
+            position: absolute;
+            bottom: 0px;
+            text-align: center;
+            background-color: #CCEAFB;
+            color: #777;
+            padding: 10px;
+        }
+        .iden .up_pic>a>i{
+            font-size: 5em;
+            color: #9edafd;
+            position: absolute;
+            left: 35px;
+            top:40px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">实名认证</h1>
+</header>
+
+<div class="mui-content">
+    <form id='identifyForm' class="reg-content iden">
+        <label style="padding-left: 30px">姓名：</label>
+        <div class="mui-input-row">
+            <input id='name' name="name" type="text" class="mui-input-clear mui-input" placeholder="请输入姓名">
+        </div>
+        <label style="padding-left: 30px">身份证号码：</label>
+        <div class="mui-input-row">
+            <input id='idCode' name="idCode" type="text" class="mui-input-clear mui-input" placeholder="请输入身份证号码">
+        </div>
+        <div class="mui-row">
+            <div class="mui-col-xs-6 up_pic" style="padding-left: 15px;padding-right: 5px">
+                <a href="javascript:void(0)" id="faceImgBtn">
+                    <img src="" id="faceImgTag" style="display: none; height: 75%; width: 100%">
+                    <i class="iconfont icon-camera faceCamera"></i>
+                    <p>身份证正面照</p>
+                </a>
+            </div>
+            <div class="mui-col-xs-6 up_pic" style="padding-right: 15px;padding-left: 5px">
+                <a href="javascript:void(0)" id="backImgBtn">
+                    <img src="" id="backImgTag" style="display: none; height: 75%; width: 100%">
+                    <i class="iconfont icon-camera backCamera"></i>
+                    <p>身份证背面照</p>
+                </a>
+            </div>
+            <input type="hidden" name="face" id="faceImg" >
+            <input type="hidden" name="back" id="backImg" >
+        </div>
+    </form>
+    <div class="mui-content-padded" >
+        <button id='identify' style="border-radius: 15px" type="button" class="mui-btn mui-btn-block mui-btn-success">保存</button>
+    </div>
+</div>
+</body>
+</html>
+#parse("addon/uploadjs.vm")
+<script src="$!{CONTEXT_PATH}/static/javascript/patient/identification.js"></script>

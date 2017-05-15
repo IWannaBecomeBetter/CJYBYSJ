@@ -1,0 +1,18 @@
+<!-- 分页全局 -->
+
+#macro(paginationDiv)
+    <div class="pagerBar clearfix" ppath="$!{CONTEXT_PATH}">
+        <span id="pager" class="pager"></span>
+    </div>
+#end
+
+#macro(pagination)
+    <form class="p_from">
+        <input type='hidden' class='p_startRow' value='$!{pageInfo.pageStart}'/>
+        <input type='hidden' id='pageStart'	  name='pageStart' value='$!{pageInfo.pageStart}'/>
+        <input type='hidden' class='p_count' 	  name='pageSize' value='$!{pageInfo.pageSize}'/>
+        <input type='hidden' class='p_total'    name='totalCount' value='$!{pageInfo.totalCount}'/>
+        <input type='hidden' class='p_size'     name='pageCount' value='$!{pageInfo.pageCount}'/>
+        <input type='hidden' class='p_number' value='$!{pageInfo.pageNumber}'/>
+    </form>
+#end

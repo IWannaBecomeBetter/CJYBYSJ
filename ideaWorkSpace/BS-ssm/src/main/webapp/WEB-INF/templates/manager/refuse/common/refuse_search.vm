@@ -1,0 +1,28 @@
+<!--search  area-->
+
+<span class="badge" id="totalcount" style="margin-left: 10px"></span>
+
+<div class="searchArea">
+
+    <div class="form-group formdiv">
+        <label>相关订单编号</label>
+        <input type="text" class="form-control" name="keyword" placeholder="订单编号"/>
+    </div>
+##
+##    <div class="form-group formdiv">
+##        <label>审核状态</label>
+##        <select name="status" class="form-control">
+##            <option value="">全部</option>
+##            #foreach($param in $!{cache.getListByKey("ORDER_STATUS")})
+##                <option value="$!{param.pValue}">$!{param.pDesc}</option>
+##            #end
+##        </select>
+##    </div>
+
+    <button class="btn btn-outline btn-info search" type="button">
+        <i class="iconfont icon-sousuo"></i>查询
+    </button>
+    <button class="btn btn-outline btn-success reset" type="button">
+        <i class="iconfont icon-shuaxin"></i>重置
+    </button>
+</div>

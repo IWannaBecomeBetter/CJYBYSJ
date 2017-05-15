@@ -1,0 +1,52 @@
+<!-- 更换康复师 -->
+<div class="modal fade changeTreat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">更换康复师</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal_wrap">
+                    <div id="changeTreatDiv">
+                        <input type="hidden" name="treatId">
+
+                        <div class="tab-content">
+                            <div class="col-sm-12 paginationDiv" style="border-top: 1px solid #ddd;">
+                                <!--search  area-->
+                                <div class="searchArea">
+                                    <form action="$!{CONTEXT_PATH}/order/treatList" method="post"
+                                          id="changeTreatSearchForm">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control col-xs-10" name="treatParam"
+                                                   placeholder="请输入康复师姓名或简拼"
+                                                   style="height: 31px; width: 250px; margin-left: 10px;"/>
+                                            <button class="btn btn-default btn-sm" type="button"
+                                                    onclick="qryData('changeTreatSearchForm')">搜索
+                                            </button>
+                                        </div>
+                                        <input type="hidden" name="orderId">
+                                    </form>
+                                </div>
+
+                                <div class="list-box clearfix queryResultList" id="queryResultList">
+
+                                </div>
+
+                                #paginationDiv()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border">
+                <button type="button" class="btn btn-success waves-effect" onclick="changeTreat()">
+                    确认
+                </button>
+                <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

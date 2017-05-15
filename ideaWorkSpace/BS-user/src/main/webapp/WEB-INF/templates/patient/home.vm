@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复患者端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <link rel="stylesheet" href="$!{CONTEXT_PATH}/static/mui/examples/hello-mui/css/icons-extra.css">
+    <style>
+        * { touch-action: none; }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">主页</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 50px">
+    <div id="slider1" class="mui-slider" style="height: 250px;">
+        <div class="mui-slider-group mui-slider-loop">
+            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="#">
+                    <img src="$!{CONTEXT_PATH}/static/img/4.jpg">
+                </a>
+            </div>
+            <!-- 第一张 -->
+            <div class="mui-slider-item">
+                <a href="#">
+                    <img src="$!{CONTEXT_PATH}/static/img/1.jpg">
+                </a>
+            </div>
+            <!-- 第二张 -->
+            <div class="mui-slider-item">
+                <a href="#">
+                    <img src="$!{CONTEXT_PATH}/static/img/2.jpg">
+                </a>
+            </div>
+            <!-- 第三张 -->
+            <div class="mui-slider-item">
+                <a href="#">
+                    <img src="$!{CONTEXT_PATH}/static/img/3.jpg">
+                </a>
+            </div>
+            <!-- 第四张 -->
+            <div class="mui-slider-item">
+                <a href="#">
+                    <img src="$!{CONTEXT_PATH}/static/img/4.jpg">
+                </a>
+            </div>
+            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="#">
+                    <img src="$!{CONTEXT_PATH}/static/img/1.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+        </div>
+    </div>
+    <h4><span class="ico"></span>康复预约</h4>
+    <div class="mui-slider" id="slider2">
+        <div class="mui-slider-group mui-slider-loop">
+            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+            <div class="mui-slider-item mui-slider-item-duplicate" style="height: auto">
+                <ul class="mui-table-view mui-grid-view">
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/7.jpg">
+                        <div class="mui-media-body">脑瘫康复</div></a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/8.jpg">
+                        <div class="mui-media-body">脑卒中康复</div></a></li>
+                </ul>
+            </div>
+            <div class="mui-slider-item" style="height: auto">
+                <ul class="mui-table-view mui-grid-view">
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/5.jpg">
+                        <div class="mui-media-body">脑瘫康复</div></a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/6.jpg">
+                        <div class="mui-media-body">脑卒中康复</div></a></li>
+                </ul>
+            </div>
+            <div class="mui-slider-item" style="height: auto">
+                <ul class="mui-table-view mui-grid-view">
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/7.jpg">
+                        <div class="mui-media-body">脑瘫康复</div></a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/8.jpg">
+                        <div class="mui-media-body">脑卒中康复</div></a></li>
+                </ul>
+            </div>
+            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
+            <div class="mui-slider-item mui-slider-item-duplicate" style="height: auto">
+                <ul class="mui-table-view mui-grid-view">
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/5.jpg">
+                        <div class="mui-media-body">脑瘫康复</div></a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="$!{CONTEXT_PATH}/static/img/6.jpg">
+                        <div class="mui-media-body">脑卒中康复</div></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mui-slider-indicator" style="position: static;background-color: #fff;">
+            <span class="mui-action mui-action-previous mui-icon mui-icon-back"></span>
+            <div class="mui-number">
+                <span>1</span> / 2
+            </div>
+            <span class="mui-action mui-action-next mui-icon mui-icon-forward"></span>
+        </div>
+    </div>
+
+    <div class="card clearfix quality">
+        <h4><span class="ico"></span>品质管理</h4>
+        <div class="mui-row">
+            <div class="mui-col-xs-6 line">
+                <div class="mid_ico"></div>
+                <p class="name">权威专家</p>
+                <p class="name">专业康复治疗师</p>
+            </div>
+            <div class="mui-col-xs-6">
+                <p class="name">服务规范化</p>
+                <p class="name">治疗个性化</p>
+            </div>
+        </div>
+    </div>
+    <div class="" style="text-align: center">
+        客服电话：<span><a href="400-888-8888">400-888-8888</a></span>
+    </div>
+</div>
+    #parse("addon/bottom-nav.vm")
+</body>
+</html>
+<script src="$!{CONTEXT_PATH}/static/javascript/patient/home.js"></script>

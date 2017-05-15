@@ -1,0 +1,38 @@
+#parse("sys_param.vm")
+
+<body onkeydown="loginKeydown()">
+<!-- Preloader -->
+<div class="preloader">
+  <div class="cssload-speeding-wheel"></div>
+</div>
+<section id="wrapper" class="login-register">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav pull-right">
+
+            </ul>
+            <span class="first">居家</span> <span class="second">康复服务平台</span>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="dialog">
+            <div class="block">
+                <p class="block-heading">登录</p>
+                <div class="block-body">
+                    <form id="loginForm">
+                        <label>用户名</label>
+                        <input type="text" id="telephone" name="telephone" class="span12">
+                        <label>密码</label>
+                        <input type="password" id="password" class="span12" name="password">
+                        <button id="loginbtn" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="button" onclick="loginIn()">立即登录</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+            <p class="pull-right"><a href="reset-password.html">忘记密码?</a></p>
+        </div>
+    </div>
+</section>
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/login.js"></script>
+

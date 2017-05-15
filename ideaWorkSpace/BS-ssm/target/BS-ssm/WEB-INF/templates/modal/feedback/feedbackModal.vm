@@ -1,0 +1,85 @@
+<!-- 审核订单 -->
+<div class="modal fade feedbackDetail" id="feedbackDetailModel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">意见反馈详情</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav customtab nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#info" aria-controls="info" role="tab" data-toggle="tab" aria-expanded="true">
+                                        <span class="visible-xs"><i class="ti-home"></i>
+                                        </span><span class="hidden-xs"> 基本信息</span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#diagnosis" aria-controls="diagnosis" role="tab" data-toggle="tab"
+                           aria-expanded="false">
+                            <span class="visible-xs"><i class="ti-settings"></i></span>
+                            <span class="hidden-xs">相关文件</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="info">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <form class="form-horizontal" id="orderDetailInfo">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" style="margin-right: 20px">手机号码</label>
+                                    <label class="col-md-6 control-label block-line beReset" style="text-align: left;padding-top: 0px" id="telephone">...</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">姓名</label>
+                                    <label class="col-md-6 control-label block-line beReset" style="text-align: left;padding-top: 0px" id="name">...</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">评分</label>
+                                    <label class="col-md-6 control-label block-line beReset" style="text-align: left;padding-top: 0px" id="score">...</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">意见详情</label>
+                                    <label class="col-md-6 control-label block-line beReset" style="text-align: left;padding-top: 0px" id="feedbackDesc">...</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">反馈时间</label>
+                                    <label class="col-md-6 control-label block-line beReset" style="text-align: left;padding-top: 0px" id="createTime">...</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="diagnosis">
+                        <div class="col-sm-12">
+                            <h3 class="box-title m-b-0">证明截图</h3>
+                            <div class="zoom-gallery m-t-30" id="diagnosisList">
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <form id="auditFeedBackForm" class="form-horizontal form-material"
+                  style="padding-left: 7.5px;padding-right: 7.5px">
+                <input name="id" style="display: none;"></input>
+                <div class="form-group">
+                    <label for="message-text" class="control-label m-b-10"><span class="star"> * </span>回复:</label>
+                    <textarea class="form-control" id="auditDesc" name="auditDesc" placeholder="请填写回复信息" required></textarea>
+                </div>
+            </form>
+            <div class="modal-footer two-button">
+                <button type="button" class="btn btn-danger waves-effect waves-light" onclick="auditFeedback()">处理完成</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Magnific popup JavaScript -->
+<script src="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/plugins/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>

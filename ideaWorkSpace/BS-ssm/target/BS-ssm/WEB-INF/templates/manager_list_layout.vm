@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+#parse("sys_param.vm")
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>居家康复服务平台</title>
+
+    #parse("addon/commonCss.vm")
+    <link href="$!{CONTEXT_PATH}/static/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+#parse("addon/commonJs.vm")
+<script src="$!{CONTEXT_PATH}/static/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/common/dataTablesConfig.js"></script>
+
+<body class="">
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<!-- Preloader -->
+<div class="preloaderAjax" hidden>
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!-- Top Navigation -->
+    #parse('common/manager_header.vm')
+    <!-- End Top Navigation -->
+    <!-- Left navbar-header -->
+    #parse('common/manager_navigation.vm')
+    <!-- Left navbar-header end -->
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            $screen_content
+
+            #parse('common/manager_footer.vm')
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+</body>
+
+<script type="text/javascript">
+
+</script>
+
+</html>

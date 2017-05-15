@@ -1,0 +1,7 @@
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="$!{CONTEXT_PATH}/static/js/jquery/1.11.0/jquery.min.js?v=$JS_VERSION"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myself.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myDialog.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myajax.js"></script>
+<script src="$!{CONTEXT_PATH}/static/js/tools/validation.js?v=$JS_VERSION"></script>
+<script src="$!{CONTEXT_PATH}/static/mui/dist/js/mui.min.js"></script>

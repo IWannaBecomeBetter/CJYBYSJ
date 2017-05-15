@@ -1,0 +1,32 @@
+<div class="nav_top">
+    <ul>
+        <li>
+            <a href="$!{CONTEXT_PATH}/recover/home">
+                <i class="iconfont icon-shouye"></i>
+
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="$!{CONTEXT_PATH}/recover/service">
+                <i class="iconfont icon-yiliao"></i>
+
+                <p>服务</p>
+            </a>
+        </li>
+        <li>
+            <a href="$!{CONTEXT_PATH}/order/myOrder">
+                <i class="iconfont icon-dingdan"></i>
+
+                <p>订单</p>
+            </a>
+        </li>
+        <li>
+            <a href="$!{CONTEXT_PATH}/recover/index">
+                <i class="iconfont icon-wode"></i>
+
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</div>

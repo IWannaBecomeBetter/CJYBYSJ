@@ -1,0 +1,18 @@
+<html>
+    <head>
+        #block("head")
+        <title>#block("title") e帮护 #end</title>
+        <link>
+        #block("page_css")<link><style></style>  #end
+        #end
+    </head>
+    <body>
+    #block("body")
+       #block("header")  #end
+       #block("content") #end
+        <script></script>
+        #block("page_js") #end
+
+    #end
+    </body>
+</html>

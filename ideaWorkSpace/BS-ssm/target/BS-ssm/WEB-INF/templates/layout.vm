@@ -1,0 +1,4 @@
+#parse("sys_param.vm")
+#parse("addon/commonCss.vm")
+#parse("addon/commonJs.vm")
+$screen_content

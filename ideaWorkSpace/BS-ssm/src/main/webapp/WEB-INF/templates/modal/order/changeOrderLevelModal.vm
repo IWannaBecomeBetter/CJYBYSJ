@@ -1,0 +1,47 @@
+<!-- 调整订单等级 -->
+<div class="modal fade changeOrderLevel" id="changeOrderLevel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="changeOrderLevelForm">
+                <input type="hidden" name="orderId">
+                <input type="hidden" name="id">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myLargeModalLabel">调整订单等级</h4>
+                </div>
+                <div class="modal-body">
+                <div class="tab-pane fade in active" >
+                    <table class="table table-bordered detailInfo">
+                        <tr>
+                            <td class="col-sm-2">订单编号<span class="star"></span></td>
+                            <td class="col-sm-4">
+                                <input type="text" name="orderCode" id="orderCode" class="form-control"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-sm-2">康复师等级<span class="star"></span></td>
+                            <td class="col-sm-4">
+                                <select name="treatLevel" class="form-control" id="treatLevel">
+                                    #foreach($param in $!{treatCharges})
+                                        <option value="$!{param.levelId}" data-price="$!{param.rmb}"
+                                                data-payWay="$!{param.payWay}" data-finalCost="$!{param.finalCost}"
+                                                data-ratio="$!{param.ratio}">$!{param.levelName}&nbsp; [$!{cache.getDescByValue("PERFESS_LEVEL_TREAT", $!{param.levelId})}]</option>
+                                    #end
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                <div class="modal-footer border">
+                <button type="button" class="btn btn-success waves-effect" onclick="changeOrderLevel()">
+                    确认
+                </button>
+                <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">取消</button>
+            </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

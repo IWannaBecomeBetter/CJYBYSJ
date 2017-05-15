@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html class="ui-page-rule">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>居家康复患者端</title>
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">用户协议</h1>
+</header>
+
+<div class="mui-content">
+   <h1>老子说了算</h1>
+</div>
+</body>
+</html>

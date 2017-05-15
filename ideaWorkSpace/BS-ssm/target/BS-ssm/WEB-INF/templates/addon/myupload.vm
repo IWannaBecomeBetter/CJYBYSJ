@@ -1,0 +1,6 @@
+<link rel="stylesheet" href="$!{CONTEXT_PATH}/static/plugins/bower_components/dropify/dist/css/dropify.min.css">
+<link rel="stylesheet" href="$!{CONTEXT_PATH}/static/css/myupload.css">
+<script src="$!{CONTEXT_PATH}/static/js/plupload/moxie.js?v=$JS_VERSION"></script>
+<script src="$!{CONTEXT_PATH}/static/js/plupload/plupload.dev.js?v=$JS_VERSION"></script>
+<script src="$!{CONTEXT_PATH}/static/js/qiniu/qiniu.js?v=$JS_VERSION"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/common/myupload.js?v=$JS_VERSION"></script>

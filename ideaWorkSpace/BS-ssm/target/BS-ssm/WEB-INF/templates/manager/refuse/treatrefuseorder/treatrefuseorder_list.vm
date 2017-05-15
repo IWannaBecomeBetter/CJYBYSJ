@@ -1,0 +1,45 @@
+#set($layout = "emptyLayout.vm")
+#parse("sys_param.vm")
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>相关订单编号</th>
+        <th>申请理由</th>
+        <th>申请理由描述</th>
+        <th>最近操作时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($row in $pageInfo.list)
+        <tr>
+            <td>
+                <a href="#approve" data-toggle="modal" orderId="$!{row.refuseDetail.orderId}" status="$!{row.refuseDetail.status}" id="$!{row.refuseDetail.id}">$!{row.orderInfo.orderCode}</a>
+            </td>
+            <td>
+                $!{row.refuseDetail.message}
+            </td>
+            <td>
+                $!{row.refuseDetail.msgDes}
+            </td>
+            <td>
+                $!{row.refuseDetail.updateDate}
+            </td>
+            <td>
+                #if($!{row.refuseDetail.status}=='1')
+                    <a href="#approve" data-toggle="modal" orderId="$!{row.refuseDetail.orderId}" status="$!{row.refuseDetail.status}" id="$!{row.refuseDetail.id}">审核</a>
+                #elseif($!{row.refuseDetail.status} == '2')
+                    已通过
+                #elseif($!{row.refuseDetail.status} == '3')
+                    已拒绝
+                #end
+
+            </td>
+        </tr>
+        #end
+    </tbody>
+</table>
+#parse('common/manager_list_nodata.vm')
+
+#pagination()

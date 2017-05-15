@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复患者端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <link rel="stylesheet" href="$!{CONTEXT_PATH}/static/mui/examples/hello-mui/css/icons-extra.css">
+    <style type="text/css">
+        .headImg {
+            padding: 8% 0px 13% 0px;
+            background: url("$!{CONTEXT_PATH}/static/img/12.jpg");
+            background-position: center center;
+            background-size: 100% auto;
+        }
+
+        .touxiang {
+            text-align: center;
+        }
+        .touxiang div {
+            width: 6em;
+            height: 6em;
+            padding: 0px;
+            border-radius: 50%;
+            border: 2px solid white;
+            color: gray;
+            margin: 0px auto;
+            margin-bottom: 5px;
+        }
+        .touxiang img {
+            width: 6em;
+            height: 6em;
+            padding: 0px;
+            border-radius: 50%;
+            border: 2px solid white;
+            color: gray;
+            margin: 0px auto;
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">个人中心</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 50px">
+    <div class="headImg">
+        <div class="touxiang">
+            <input hidden value="$!{headFile}">
+            #if(!$!{headFile})
+                <div id="headImgBtn" href="#">
+                    <span id="preImg" class="mui-icon mui-icon-person" style="font-size: 3.8em; color: white;"></span>
+                    <img src="" id="headImgTag" style="display: none">
+                </div>
+
+                <input type="hidden" name="headImg" id="headImg" >
+            #else
+                <div>
+                    <span id="touxiangimg" style="font-size: 3.8em; color: white;">
+                        <img id="trueimg" src="$!{headFile}"  style="width: 100%; height: 100%; border-radius: 50%;" />
+                    </span>
+                </div>
+            #end
+            <span id="touxiangword">
+                #if($!{account.status}=="1")
+                    <a onclick="identification()">用户未认证</a>
+                #elseif($!{account.status}=="2")
+                    认证审核中
+                #elseif($!{account.status}=="-1")
+                    <a onclick="reIdentification()">认证失败</a>
+                    <input id="auditDesc" hidden value="$!{account.auditDesc}">
+                #else
+                    已认证
+                #end
+            </span>
+        </div>
+    </div>
+
+    <ul class="mui-table-view" style="margin-top: 10px;">
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="$!{CONTEXT_PATH}/order/myOrder">
+                <span class="mui-icon mui-icon-bars"></span>
+                我的订单
+            </a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a id="changeaddress" class="mui-navigate-right">
+                <span class="mui-icon mui-icon-compose"></span>
+                修改信息
+            </a>
+        </li>
+    </ul>
+    <ul class="mui-table-view" style="margin-top: 20px;">
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="$!{CONTEXT_PATH}/account/bindEmail">
+                <span class="mui-icon mui-icon-email"></span>
+                绑定邮箱
+            </a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="$!{CONTEXT_PATH}/account/updatePassword">
+                <span class="mui-icon mui-icon-locked"></span>
+                修改密码
+            </a>
+        </li>
+    </ul>
+    <ul class="mui-table-view" style="margin-top: 20px;">
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="$!{CONTEXT_PATH}/feedback/index">
+                <span class="mui-icon iconfont icon-xiaolian"></span>
+                用户反馈
+            </a>
+        </li>
+    </ul>
+
+    <ul id="logoutBtn" class="mui-table-view" style="margin-top: 20px;margin-bottom: 20px;" onclick="logout()">
+        <li class="mui-table-view-cell" style="text-align: center;">
+            <span style="color: indianred;">退出登录</span>
+        </li>
+    </ul>
+
+</div>
+
+    #parse("addon/bottom-nav.vm")
+</body>
+</html>
+#parse("addon/uploadjs.vm")
+<script src="$!{CONTEXT_PATH}/static/javascript/patient/mine.js"></script>

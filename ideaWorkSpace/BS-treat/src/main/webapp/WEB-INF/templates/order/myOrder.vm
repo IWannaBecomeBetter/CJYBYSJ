@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复康复师端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <link rel="stylesheet" href="$!{CONTEXT_PATH}/static/mui/examples/hello-mui/css/icons-extra.css">
+    <style>
+        .mui-table-view-cell {
+            background-color: transparent;
+        }
+        .mui-content>.mui-table-view:first-child {
+            margin-top: 0px;
+        }
+        .mui-content {
+            padding-bottom: 50px;
+        }
+        .mui-media-body p {
+            font-size: 12px;
+            padding: 1px 50px 1px 0px;
+            position: relative;
+        }
+        .mui-media-body p span,
+        .mui-media-body p i {
+            padding-right: 8px;
+        }
+        .mui-media-body .order-price {
+            position: absolute;
+            right: 0px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: right;
+        }
+        .mui-media-body .order-away {
+            position: absolute;
+            right: 0px;
+            text-align: right;
+        }
+        ::-webkit-scrollbar {
+            width: 0px !important;
+            display: none !important;
+        }
+        .mui-table-view:first-child:before,
+        .mui-table-view-cell:first-child:before {
+            display: none;
+        }
+        .order-color-blue {
+            color: #099FDE !important;
+        }
+        .order-color-orange {
+            color: #ff9a14 !important;
+        }
+        * { touch-action: none; }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">订单</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 50px">
+    <div style="padding: 10px 10px;">
+        <div id="segmentedControl" class="mui-segmented-control">
+            <a id="on" class="mui-control-item mui-active">进行中</a>
+            <a id="ok" class="mui-control-item" status="10">已完成</a>
+        </div>
+    </div>
+    <div id="refreshContainer" class="mui-control-content mui-active">
+        <div class="mui-scroll" id="orderList">
+
+        </div>
+    </div>
+</div>
+    #parse("addon/bottom-nav.vm")
+</body>
+</html>
+<script src="$!{CONTEXT_PATH}/static/javascript/order/myOrder.js"></script>

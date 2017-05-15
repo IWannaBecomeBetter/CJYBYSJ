@@ -1,0 +1,6 @@
+
+<!-- table 列表无数据 -->
+
+#if($!{pageInfo.totalCount} == 0 )
+没有数据
+#end

@@ -1,0 +1,46 @@
+#if($!{orderInfoExts.size()} == 0)
+    暂无数据
+#else
+<ul class="mui-table-view" >
+    #foreach($row in $!{orderInfoExts})
+        <li class="mui-table-view-cell">
+            <div class="mui-media-body">
+                <div style="height: 35px">
+                #if($!{row.orderInfo.typeId}=='1')
+                    脑瘫康复
+                #elseif($!{row.orderInfo.typeId}=='2')
+                    脑卒中康复
+                #end
+                <button type="button" style="border-radius: 10px;width: 100px;float: right" onclick="OrderDetail($!{row.orderInfo.id})" class="mui-btn mui-btn-primary">详情</button>
+                </div>
+                <p class='mui-ellipsis'>
+                    <span class="order-rate order-color-blue">
+                        #if($!{row.orderInfo.orderStatus}=='1')
+                            新增订单
+                        #elseif($!{row.orderInfo.orderStatus}=='2')
+                            审核通过待分派
+                        #elseif($!{row.orderInfo.orderStatus}=='-1')
+                            审核未通过
+                        #elseif($!{row.orderInfo.orderStatus}=='3')
+                            订单已分派
+                        #elseif($!{row.orderInfo.orderStatus}=='4')
+                            订单已被接受
+                        #elseif($!{row.orderInfo.orderStatus}=='-4')
+                            订单正在重新分派
+                        #elseif($!{row.orderInfo.orderStatus}=='10')
+                            订单已完成
+                        #end
+                    </span>
+                    <i class="fa fa-wifi"></i><span class="order-price order-color-orange">￥688</span>
+                </p>
+                <p class='mui-ellipsis'>$!{row.orderBooking.address}<span class='order-away'>$!{row.orderBooking.visitTime}</span></p>
+                #if($!{row.orderInfo.orderStatus}=='4')
+                    <p class='mui-ellipsis' style="float: right;padding-right: 0px"><button type="button" style="border-radius: 10px;width: 100px" class="mui-btn mui-btn-success" onclick="orderFinish($!{row.orderInfo.id})">完成</button></p>
+                #end
+            </div>
+        </li>
+    #end
+</ul>
+#end
+
+

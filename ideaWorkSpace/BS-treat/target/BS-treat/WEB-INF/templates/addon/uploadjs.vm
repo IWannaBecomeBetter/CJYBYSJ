@@ -1,0 +1,150 @@
+<script src="$!{CONTEXT_PATH}/static/js/plupload/moxie.js"></script>
+<script src="$!{CONTEXT_PATH}/static/js/plupload/plupload.dev.js"></script>
+<script src="$!{CONTEXT_PATH}/static/js/qiniu/qiniu.js"></script>
+
+<script type="text/javascript">
+    var CJY = {};
+    /*
+    option = {
+      buttonId //上传按钮id
+      maxCount //最大上传张数
+      ImageAdded //function(src,id) 选择图片后处理
+    }
+     */
+
+    /**
+     * iCare.imageUploader
+     *
+     * uploader 上传对象
+     * callback 储存到服务器后的回调
+     * uploadedInfos:[{id,serverId,key}] 保存到服务器上的信息,id:本地文件id,serverId:服务器FileStorageInfo对象的id,key:七牛key或微信的serverId
+     *
+     */
+
+    CJY.imgUploader = function (option) {
+        var that = this;
+
+        var maxCount = 0;
+        if (option.maxCount) {
+            maxCount = option.maxCount;
+        }
+        that.uploadedInfos = []; //已存储到七牛服务器上的信息
+        if(option.callback){
+            that.callback = option.callback;
+        }else{
+            that.callback = function () {
+            };
+        }
+
+        that.uploader = Qiniu.uploader({
+            runtimes: 'html5',
+            browse_button: option.buttonId,
+            uptoken_url: base + '/file/uptoken',
+            get_new_uptoken: true,
+            unique_names: true,
+            domain: '$!{domain}',
+            max_file_size: '10mb',
+            max_retries: 3,
+            chunk_size: '4mb',
+            auto_start:option.auto_start,
+            multi_selection: (maxCount == 0 || maxCount > 1),
+            filters: {
+                mime_types: [{title: "图片文件", extensions: "jpg,jpeg,png"}]
+            },
+            init: {
+                'FilesAdded': function (up, files) {
+                    if (maxCount > 1) {
+                        if (up.files.length > maxCount) {
+                            showBaseAlert('最多只能选择' + maxCount + '张图片');
+                            plupload.each(files, function (file) {
+                                up.removeFile(file);
+                            });
+                            return;
+                        }
+                    }
+                    else if (maxCount == 1) {
+                        //单图上传时清空上传列表
+                        if (up.files.length > 1) {
+                            up.removeFile(up.files[0]);
+                        }
+                        //清空已上传的信息
+                        if (that.uploadedInfos.length > 0) {
+                            that.uploadedInfos = [];
+                        }
+                    }
+                    plupload.each(files, function (file) {
+                        var fileNative = file.getNative();
+                        var URL = window.URL || window.webkitURL;
+                        var imgLink = URL.createObjectURL(fileNative);
+                        option.ImageAdded(imgLink, file.id);
+                    });
+                },
+                'FileUploaded': function (up, file, info) {
+                    var res = $.parseJSON(info);
+                    var key = res.key;
+                    that.uploadedInfos.push({id: file.id, key: res.key});
+                },
+                'UploadComplete': function (up, files) {
+                    var keys = that.uploadedInfos.map(function (info) {
+                        return info.key;
+                    }).join(',');
+                    if (keys.length > 0) {
+                        $.ajax({
+                            url: base + '/file/filesSave',
+                            data: {keys: keys},
+                            type: 'post',
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                showBaseAlert('网络异常，请稍后再试');
+                            },
+                            success: function (data) {
+                                var serverIds = data.data;
+                                for (var i = 0; i < serverIds.length; i++) {
+                                    that.uploadedInfos[i].serverId = serverIds[i];
+                                }
+                                that.callback(serverIds);
+                            }
+                        });
+                    }
+                    else {
+                        that.callback([]);
+                    }
+                },
+                'Error': function (up, err, errTip) {
+                    //上传出错时，处理相关的事情
+                    showBaseAlert(errTip);
+                }
+            }
+        });
+        /*
+        开始上传
+        callback //存储后的回调
+         */
+        that.start = function (callback) {
+            that.callback = callback;
+            that.disable();
+            that.uploader.start();
+        };
+        that.removeFile = function (id) {
+            var file = that.uploader.getFile(id);
+            if (file) {
+                that.uploader.removeFile(file);
+            }
+            for (var i = 0; i < that.uploadedInfos.length; i++) {
+                if ((that.uploadedInfos[i].id && id == that.uploadedInfos[i].id) || (that.uploadedInfos[i].serverId && that.uploadedInfos[i].serverId == id)) {
+                    that.uploadedInfos.splice(i, 1);
+                    break;
+                }
+            }
+        };
+        that.disable = function () {
+            $('#' + option.buttonId).attr('disabled', 'disabled');
+        };
+        that.enable = function () {
+            $('#' + option.buttonId).removeAttr('disabled');
+        }
+        that.isEmpty = function () {
+            return that.uploader.files.length == 0 && that.uploadedInfos.length == 0;
+        }
+    }
+
+</script>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复康复师端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <link rel="stylesheet" href="$!{CONTEXT_PATH}/static/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="$!{CONTEXT_PATH}/static/mui/picker/mui.picker.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="$!{CONTEXT_PATH}/static/mui/picker/mui.poppicker.css"></link>
+    <style>
+        /*common*/
+
+        .mui-table-view {
+            margin-bottom: 20px;
+        }
+        .mui-table-view-cell {
+            background-color: transparent;
+        }
+        .mui-content>.mui-table-view:first-child {
+            margin-top: 0px;
+        }
+        i.mui-media-object {
+            color: #ccc;
+            font-size: 18px;
+        }
+        .mui-media-body p {
+            font-size: 12px;
+            padding: 1px 0px;
+            position: relative;
+            overflow: visible;
+        }
+        .mui-media-body p span,
+        .mui-media-body p i {
+            padding-right: 8px;
+        }
+        .mui-media-body .hotel-right {
+            position: absolute;
+            right: 0px;
+        }
+        .mui-media-body .hotel-right-text {
+            position: absolute;
+            font-size: 14px;
+            height: 16px;
+            line-height: 16px;
+            right: 40px;
+            top: 50%;
+            margin-top: -8px;
+        }
+        /*hotel info*/
+
+        .hotel-hotel-info .mui-media-body {
+            padding-right: 100px;
+        }
+        .hotel-hotel-info .mui-media-body p {
+            padding: 2px 0px;
+        }
+        .hotel-hotel-info .hotel-ln-2 {
+            font-size: 15px;
+        }
+        .hotel-hotel-info .hotel-ln-3 {
+            padding-top: 5px !important;
+            border-top: dotted 1px #ddd;
+        }
+        .hotel-hotel-info .hotel-ln-3 em {
+            font-style: normal;
+            display: inline-block;
+            width: 25%;
+        }
+        .hotel-hotel-info .hotel-hetol-iamges {
+            position: absolute;
+            right: 15px;
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            margin-top: -40px;
+            /*border: dotted 1px #eee;*/
+        }
+        .hotel-hotel-info .hotel-hetol-iamges img {
+            width: 100%;
+            height: 100%;
+        }
+        .hotel-hotel-info .hotel-hetol-iamges label {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            font-size: 12px;
+            color: #eee;
+        }
+        /**room bar**/
+
+        .hotel-bar-room {
+            height: 46px;
+            position: relative;
+            background-color: #fff;
+            line-height: 49px;
+            padding: 0px 0px 0px 8px;
+        }
+        .hotel-bar-room .hotel-price-type,
+        .hotel-bar-room .hotel-room-filter,
+        .hotel-bar-room .hotel-date-modify {
+            display: inline-block;
+            height: 100%;
+            float: right;
+            position: relative;
+            width: 90px;
+            text-align: center;
+            font-size: 12px;
+            margin-left: 1px;
+        }
+        .hotel-bar-room .hotel-price-type:active,
+        .hotel-bar-room .hotel-room-filter:active,
+        .hotel-bar-room .hotel-date-modify:active {
+            background-color: #eee;
+        }
+        .hotel-bar-room .hotel-price-type:before,
+        .hotel-bar-room .hotel-room-filter:before {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: -1px;
+            width: 1px;
+            content: '';
+            background-color: #c8c7cc;
+            -webkit-transform: scaleX(.5);
+            transform: scaleX(.5);
+        }
+        .hotel-bar-room:before {
+            position: absolute;
+            top: -1px;
+            right: 0px;
+            left: 0px;
+            height: 1px;
+            content: '';
+            background-color: #c8c7cc;
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+        }
+        /*room list*/
+
+        .hotel-list-room.mui-table-view .mui-media-object {
+            width: 60px;
+            min-width: 60px;
+            height: 60px;
+            line-height: 75px;
+        }
+        .hotel-list-room .hotel-price {
+            position: absolute;
+            right: 18px;
+        }
+        .hotel-list-room .hotel-btn-booking {
+            position: absolute;
+            right: 0px;
+            bottom: 2px;
+            background: #ff9a14;
+            color: #eee;
+            font-size: 13px;
+            padding: 3px 18px;
+            border-radius: 3px;
+        }
+
+        .image-item {
+            width: 65px;
+            height: 65px;
+            /*background-image: url(../images/iconfont-tianjia.png);*/
+            background-size: 100% 100%;
+            display: inline-block;
+            position: relative;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: solid 1px #e8e8e8;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="$!{CONTEXT_PATH}/order/myOrder"><span class="mui-icon mui-icon-back"></span></a>
+    <a class="mui-btn mui-btn-link mui-pull-right" id="newTrain"  href="#popover">#if($!{orderInfo.orderStatus}=='4')新增#end
+    </a>
+    <h1 class="mui-title">订单详情</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 0px">
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell mui-media hotel-hotel-info">
+            <div class="mui-media-body">
+                #if($!{orderInfo.typeId}=='1')
+                    脑瘫康复
+                #elseif($!{orderInfo.typeId}=='2')
+                    脑卒中康复
+                #end
+                #if($!{orderInfo.orderStatus}=='1')
+                    <p class='mui-ellipsis hotel-ln-1'>新增订单</p>
+                #elseif($!{orderInfo.orderStatus}=='2')
+                    <p class='mui-ellipsis hotel-ln-1'>审核通过待分派</p>
+                #elseif($!{orderInfo.orderStatus}=='-1')
+                    <p class='mui-ellipsis hotel-ln-1'>审核未通过</p>
+                #elseif($!{orderInfo.orderStatus}=='3')
+                    <p class='mui-ellipsis hotel-ln-1'>订单已分派</p>
+                #elseif($!{orderInfo.orderStatus}=='4')
+                    <p class='mui-ellipsis hotel-ln-1'>订单已被接受</p>
+                #else
+                    <p class='mui-ellipsis hotel-ln-1'>订单已完成</p>
+                #end
+
+                <p data-url='./comment.html' class='mui-ellipsis hotel-color-blue  hotel-ln-2'>
+                    <span class="hotel-rate">$!{orderBooking.address}</span><span class="hotel-comment hotel-right">$!{orderBooking.visitTime}</span>
+                </p>
+                <p data-url='./comment.html' class='mui-ellipsis  hotel-ln-3'><em style="width: 50%">$!{orderBooking.telephone}</em>
+                    <em>
+                        #if($!{orderBooking.sex}==1)
+                            男
+                            #elseif($!{orderBooking.sex}==2)
+                            女
+                        #end
+                    </em><em>$!{orderBooking.age}岁</em></p>
+                <div class="hotel-hetol-iamges" data-url='./hotel-pic.html'>
+                    <img src="$!{headFile}" />
+                    <label>$!{patient.name}</label>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="mui-table-view">
+        <li data-event='tap>openMap' class="mui-table-view-cell mui-media">
+            <div class="mui-media-body">
+                主要情况
+                <p>$!{orderBooking.mainConditions}</p>
+
+            </div>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <div class="mui-media-body">
+                诊断证明
+                <p >
+                #foreach($filePath in $!{filePathList})
+                    <img alt="" class="image-item" data-toggle="modal" data-target="#pic" src="$!{filePath}">
+                #end
+                </p>
+            </div>
+        </li>
+    </ul>
+    <div id="train" hidden>
+        <form class="mui-input-group" id="recoverFrom">
+            <input hidden name="orderId" value="$!{orderInfo.id}">
+            <div class="mui-input-row">
+                <label>训练名称</label>
+                <input type="text" class="mui-input-speech mui-input-clear" name="name" placeholder="请输入训练名称">
+            </div>
+            <div class="mui-input-row">
+                <label>训练描述</label>
+            </div>
+            <textarea rows="3" type="text" class="mui-input-speech mui-input-clear" name="recoverDesc" class="form-control" placeholder="请输入训练描述"></textarea>
+            <div class="mui-button-row">
+                <button class="mui-btn mui-btn-primary" type="button" onclick="finishTrain()">确认</button>&nbsp;&nbsp;
+                <button class="mui-btn mui-btn-primary" type="button" onclick="cancelTrain()">取消</button>
+            </div>
+        </form>
+    </div>
+    #if($!{orderInfo.orderStatus} == 4 ||$!{orderInfo.orderStatus} == 10)
+        <div class="hotel-bar-room">
+            康复训练
+            <span data-event='tap>setPriceType' class="hotel-room-filter hotel-color-blue">$!{treat.telephone}</span>
+            <span data-event='tap>setRoomType'  class="hotel-price-type hotel-color-blue">$!{treat.name}</span>
+        ##        <span data-event="tap>setBookingDate" class="hotel-date-modify hotel-color-blue">修改</span>
+        </div>
+        <ul class="mui-table-view hotel-list-room">
+            #foreach($row in $!{recovers})
+                <li class="mui-table-view-cell mui-media" data-url = "./room-info.html">
+                    <div class="mui-media-body">
+                        $!{row.name}
+                        <span class="hotel-price hotel-color-orange">￥100</span>
+                        <p class='mui-ellipsis'>$!{row.recoverDesc}</p>
+                    </div>
+                </li>
+            #end
+
+        </ul>
+    #end
+
+
+##        <h4>总结</h4>
+##        <ul class="mui-table-view">
+##            <li class="mui-table-view-cell mui-media">
+##                <div class="mui-media-body hotel-color-gray">
+##                    本次康复疗程总体效果还算可以，患者已经可以生活自理
+##                </div>
+##            </li>
+##        </ul>
+
+</div>
+</body>
+</html>
+#parse("addon/uploadjs.vm")
+
+<script src="$!{CONTEXT_PATH}/static/mui/picker/mui.picker.min.js"></script>
+<script src="$!{CONTEXT_PATH}/static/mui/picker/mui.poppicker.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/order/orderDetail.js"></script>

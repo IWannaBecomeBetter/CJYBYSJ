@@ -1,0 +1,2 @@
+#parse("sys_param.vm")
+$screen_content

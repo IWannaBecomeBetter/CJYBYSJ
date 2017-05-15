@@ -1,0 +1,30 @@
+<div class="searchArea">
+
+    <div class="form-group formdiv">
+        <label>搜索条件</label>
+        <input type="text" class="form-control" name="telephone" placeholder="手机"/>
+    </div>
+
+    <div class="form-group formdiv">
+        <label>用户状态</label>
+        <select name="status" class="form-control">
+            <option value="">全部</option>
+            <option value="1">账户新增</option>
+            <option value="2">提交认证</option>
+            <option value="3">认证确认</option>
+            <option value="-1">认证失败</option>
+            <option value="0">账号失效</option>
+        </select>
+    </div>
+
+    <div class="form-group formdiv">
+        <input type="text" class="form-control datepicker-autoclose" name="startTime" placeholder="请选择开始时间">
+        <input type="text" class="form-control datepicker-autoclose" name="endTime" placeholder="请选择结束时间">
+    </div>
+    <button class="btn btn-outline btn-info search" type="button">
+        <i class="iconfont icon-sousuo"></i>查询
+    </button>
+    <button class="btn btn-outline btn-success reset" type="button">
+        <i class="iconfont icon-shuaxin"></i>重置
+    </button>
+</div>

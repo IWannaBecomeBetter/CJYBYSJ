@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	#parse("sys_param.vm")
+	#parse("addon/css.vm")
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>页面错误</title>
+    <link rel="stylesheet" href="$!{CONTEXT_PATH}/static/js/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+    <style>
+        .sorry111{
+            text-align: center;
+            padding:40px 0;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body class="bg-gray">
+<div class="container guide">
+    <div class="row">
+        <header>
+            <span>页面错误</span>
+        </header>
+
+        <form>
+
+            <div class="content" style="text-align: center">
+                <div class="sorry111">
+                    <img src="$!{CONTEXT_PATH}/static/img/sorry.png" alt="" style="margin-top: 13%"/>
+                    <h2 style="margin-top: 15%;text-shadow: 5px 5px 5px #FF0000;">出现了一些小问题</h2>
+                    <h5 style="margin-top:20px;margin-bottom: 20%">
+						<img src="$!{CONTEXT_PATH}/static/img/tishi.png" alt="" style="width: 20px;height: 20px;margin-right: 10px"/>$!{request.getAttribute("errorMessage")}
+					</h5>
+                </div>
+
+                <a href="$!{CONTEXT_PATH}/recover/index" style="margin: 0 auto;font-size: 1.4rem;color: #51ba12;text-decoration: underline">点击返回首页</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+	#parse("addon/javascript.vm")
+
+<script type="text/javascript">
+
+    $(function () {
+
+    });
+</script>
+
+</html>

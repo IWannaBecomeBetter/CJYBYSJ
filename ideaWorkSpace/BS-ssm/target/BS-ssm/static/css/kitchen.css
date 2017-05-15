@@ -1,0 +1,155 @@
+.navbar-inverse .navbar-nav>li>img{
+	box-shadow: 0px 0px 5px 2px #5ACAFA;
+	border: 1px solid #5ACAFA;
+}
+.modal-header{
+	border-bottom: 2px solid #00A9F1;
+}
+.modal-title{
+	color: #00A9F1;
+}
+.table-hover>tbody>tr:hover{
+	background-color: #e2f1fc;
+}
+.account>p>a:hover,
+.account>p>a:focus{
+	text-decoration: none;
+}
+.account>p>a>i{
+	color: #00A9F1;
+	margin-left: 30px;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{
+	background-color: #21B8F9;
+}
+.b-l{
+	border-left: 1px solid #ddd;
+}
+.list-box .card{
+	padding: 5px;
+	width: 140px;
+	border-right: 1px solid #ddd;
+  	border-top: 1px solid #ddd;
+  	border-bottom: 1px solid #ddd;
+
+	cursor: pointer;
+}
+.list-box .pic_head{
+	width: 90px;
+	height: 95px;
+	margin: 0px auto;
+	background: url(../plugins/images/head_pic.png) no-repeat;
+}
+.list-box p{
+	text-align: center;
+	padding: 5px;
+}
+.list-box p.name{
+	font-size: 16px;
+	padding-left:60px;
+}
+.list-box p.name span{
+	color: #f9a36f;
+	border: 1px solid #f9a36f;
+	padding: 2px;
+	font-size: 14px;
+	margin-left: 10px;
+}
+.list-box li>i{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	/*margin:0px 5px;*/
+	vertical-align: middle;
+}
+.list-box li>i.ico2{
+	background-position-y:-25px ;
+}
+.list-box li>i.ico3{
+	background-position-y:-50px ;
+}
+.list-box li{
+	margin-bottom: 5px;
+}
+.list-box li>span.post{
+	margin-left: 10px;
+}
+.list-box .oper{
+	background-color:#00a9f1;
+	margin: -5px;
+	padding-top: 10px;
+}
+.list-box .oper>div{
+	text-align: center;
+}
+.list-box .oper>div>a>span{
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	border-radius: 100px;
+	border: 2px solid #fff;
+	background: url(../plugins/images/icon.png) no-repeat;
+	background-position: 64% 20%;
+}
+.list-box .oper>div.oper_ico2>a>span{
+	background-position: 83% 20%;
+}
+.list-box .oper>div.oper_ico3>a>span{
+	background-position: 103% 20%;
+}
+.list-box .oper>div>a>p{
+	color: #fff;
+	padding: 0px;
+}
+.list-box .oper{
+	display: none;
+}
+/*.list-box .card:hover .oper{*/
+	/*display: block;*/
+/*}*/
+/*.list-box .card:hover ul{*/
+	/*display: none;*/
+/*}*/
+.list-box .card:hover{
+	border: 1px solid rgb(0, 169, 241);
+}
+.list-box .female{
+	background-position-x:-196px;
+}
+
+.list-box div.active {
+	border: 1px solid rgb(0, 169, 241);
+	background-color: #DCD5D5;
+}
+
+ul li{
+    list-style-type:none;
+}
+
+.card ul{
+    padding: 0px;
+}
+
+.orderFinishedThisStatus{
+    border-color: #2cc642 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

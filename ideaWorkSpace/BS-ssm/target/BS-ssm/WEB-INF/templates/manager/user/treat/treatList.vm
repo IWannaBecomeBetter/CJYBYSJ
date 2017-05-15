@@ -1,0 +1,49 @@
+#set($layout = 'manager_list_layout.vm')
+<!-- Page Content -->
+<div class="content">
+    <div class="header">
+        <div class="stats">
+            <p class="stat"><span class="number">53</span>认证完成</p>
+            <p class="stat"><span class="number">27</span>待审核</p>
+            <p class="stat"><span class="number">15</span>新增</p>
+        </div>
+
+        <h1 class="page-title">康复师账户</h1>
+    </div>
+
+    <ul class="breadcrumb">
+        <li>账户管理<span class="divider">/</span></li>
+        <li class="active">康复师</li>
+    </ul>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+
+            <div class="row-fluid">
+
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>消息:</strong> 陈继赟又变帅了!
+                </div>
+            </div>
+            <div class="row-fluid">
+                <form class="form-inline">
+                    #parse('manager/user/common/user_search.vm')
+                </form>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- 详情-->
+#parse('modal/user/treatInfoModal.vm')
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/user/treat/treatList.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/manager/user/treat/treatModal.js"></script>

@@ -1,0 +1,115 @@
+<!-- 康复师详情 -->
+<div class="modal fade treatInfo" id="treatInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">康复师详情</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="white-box">
+                        <!-- Nav tabs -->
+                        <ul class="nav customtab nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#info" aria-controls="info" role="tab" data-toggle="tab" aria-expanded="true">
+                                        <span class="visible-xs"><i class="ti-home"></i>
+                                        </span><span class="hidden-xs">基本信息</span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#service" aria-controls="service" role="tab" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs"><i class="ti-user"></i>
+                                        </span> <span class="hidden-xs">服务信息</span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#paper" aria-controls="paper" role="tab" data-toggle="tab" aria-expanded="false">
+                                    <span class="visible-xs"><i class="ti-email"></i></span>
+                                    <span class="hidden-xs">证件信息</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="info">
+                                <form class="form-horizontal" id="orderDetailInfo">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">手机号码</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="telephone" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">姓名</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="name" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">身份证号码</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="idCard" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">年龄</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="age" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">性别</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="sex" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0px">
+                                        <label class="col-md-3 control-label m-r-20">身份证正面照</label>
+                                        <div class="zoom-gallery col-md-2  beReset" id="headPic">
+                                        </div>
+                                        <label class="col-md-2 control-label m-r-20">身份证背面照</label>
+                                        <div class="zoom-gallery col-md-2  beReset" id="bodyPic">
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="service">
+                                <form class="form-horizontal" id="orderDetailInfo">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">工作年限</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="workYears" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">职称级别</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="level" style="margin-right: 20px">...</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label m-r-20" style="margin-right: 20px">从业经历</label>
+                                        <label class="col-md-6 control-label block-line beReset" id="serviceExp" style="margin-right: 20px">...</label>
+                                    </div>
+
+                                </form>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="paper">
+                                <div class="zoom-gallery col-md-10  beReset" id="paperList">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="treatInfoForm" class="form-horizontal form-material" style="padding-left: 10px;padding-right: 10px">
+                        <input name="id" style="display: none;"></input>
+                        <input name="accountId" style="display: none;"></input>
+                        <input name="auditType" style="display: none;"></input>
+                        <div class="form-group" style="padding-left: 7.5px;padding-right: 7.5px">
+                            <label for="message-text" class="control-label m-b-10"><span class="star"> * </span>审核意见:</label>
+                            <textarea class="form-control beReset" id="auditDesc" name="auditDesc" placeholder="请填写审核意见" required></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer two-button" hidden>
+                <button type="button" class="btn btn-default waves-effect" id="treat-failed">不通过</button>
+                <button type="button" class="btn btn-danger waves-effect waves-light"  id="treat-ok">通过</button>
+            </div>
+            #parse('modal/modalFooterClose.vm')
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+

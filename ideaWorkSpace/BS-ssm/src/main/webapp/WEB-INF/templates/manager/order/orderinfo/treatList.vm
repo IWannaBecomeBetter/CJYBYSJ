@@ -1,0 +1,32 @@
+#set($layout = 'emptyLayout.vm')
+#parse("sys_param.vm")
+#foreach($row in $!{pageInfo.list})
+    <div class="col-sm-2 card b-l" val="$!{row.id}">
+        #if($!{row.recover.sex} == '2')
+            <p class="pic_head"></p>
+        #else
+            <p class="pic_head female"></p>
+        #end
+
+        <ul>
+            <li><i class="ico1"></i><span>$!{row.name}</span></li>
+            <span>$!{row.telephone}</span></li>
+        </ul>
+    </div>
+
+#end
+
+###pagination()
+
+<script type="text/javascript">
+    $(function() {
+        $('.card').click(function() {
+            $('.card').removeClass('active');
+            $(this).addClass('active');
+
+            $('#treatDiv').find('input[name="accountId"]').val($(this).attr('val'));
+        });
+
+    });
+</script>
+

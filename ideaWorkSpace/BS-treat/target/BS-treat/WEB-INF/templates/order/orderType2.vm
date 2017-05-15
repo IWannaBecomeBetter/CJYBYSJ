@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>居家康复康复师端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <style>
+        .order-bar-submit {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background: #FF9913;
+            height: 44px;
+            line-height: 44px;
+            padding: 0px 140px 0px 15px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .order-submit-btn {
+            position: absolute;
+            width: 80px;
+            background-color: #ff7d13;
+            text-align: center;
+            right: 0px;
+            color: #fff;
+        }
+
+        .mui-content p {
+            text-indent: 2em;
+            margin: 10px;
+            font-size: 10px;
+            background-color: #fff;
+            padding: 8px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav mui-bar-transparent">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">脑卒中康复</h1>
+</header>
+<div class="mui-content" style="margin-bottom: 50px">
+    <input id="orderType" value="2" hidden>
+    <div>
+        <h3>病因</h3>
+        <p>1.血管性危险因素：脑卒中发生的最常见原因是脑部供血血管内壁上有小栓子，脱落后导致动脉-动脉栓塞，即缺血性卒中。也可能由于脑血管或血栓出血造成，为出血性卒中。冠心病伴有房颤患者的心脏瓣膜容易发生附壁血栓，栓子脱落后可以堵塞脑血管，也可导致缺血性卒中。其他因素有高血压、糖尿病、高血脂等。其中，高血压是中国人群卒中发病的最重要危险因素，尤其是清晨血压异常升高。研究发现清晨高血压是卒中事件最强的独立预测因子，缺血性卒中在清晨时段发生的风险是其他时段的4倍，清晨血压每升高10mmHg，卒中风险增加44%。颈内动脉或椎动脉狭窄和闭塞的主要原因是动脉粥样硬化。另外，胶原性疾病、高血压病动脉改变、风心病或动脉炎、血液病、代谢病、药物反应、肿瘤、结缔组织病等引起的动脉内膜增生和肥厚，颈动脉外伤，肿瘤压迫颈动脉，小儿颈部淋巴结炎和扁桃体炎伴发的颈动脉血栓，以及先天颈动脉扭曲等，均可引起颈内动脉狭窄和闭塞，或因血管破裂出血引发脑中风。颈椎病骨质增生或颅底陷入压迫椎动脉，也可造成椎动脉缺血。</p>
+
+        <p>2.性别、年龄、种族等因素：研究发现我国人群脑卒中发病率高于心脏病，与欧美人群相反。</p>
+
+        <p>3.不良生活方式：通常同时存在多个危险因素，比如吸烟、不健康的饮食、肥胖、缺乏适量运动、过量饮酒和高同型半胱氨酸；以及患者自身存在一些基础疾病如高血压、糖尿病和高脂血症。都会增加脑卒中的发病风险。</p>
+    </div>
+    <div>
+        <h3>康复内容</h3>
+        <p>1.床上翻身训练 发病1～2周内进行，这是最基本的躯干功能训练之一，患者双手交叉在一起，上肢伸展，先练习前方上举，并练习伸向前方。在翻身时交叉的双手伸向翻身侧，头和躯干翻转至侧卧位，然后返向侧卧位，再向另一侧翻身。</p>
+
+        <p>2.桥式运动 患者取仰卧位，双腿屈曲，足踏床，慢慢的抬起臀部，维持一段时间后慢慢放下。在患者能较容易的完成双桥式运动后，让患者悬空健腿仅患腿屈曲，足踏床，抬臀。</p>
+
+        <p>3.坐位训练 发病后1～3周内进行，由于老年人和较长时间卧床者易出现直立性低血压，故在首次取坐位时，不宜马上取直立（90°）坐位，可用起立平台或靠背架，依次取30°、45°、60°、80°坐位，如前一种体位能坚持30min且无明显体位性低血压表现，可过渡到下一项。</p>
+
+        <p>4.站位训练 发病后3～4周内进行，一般在进行动态坐位平衡训练的同时开始站位训练。对一般情况较差、早期进行此训练有困难者，可先站起立平台，躯干功能较好、下肢功能较差者可用长下肢支具。医.学教育网搜集整理也可利用部分减重支持装置进行站位平衡训练。起立训练要求患者双足分开约一脚宽，双手手指交叉，上肢前伸，双腿均匀持重，慢慢站起。</p>
+
+        <p>5.步行训练 发病后5～6周内进行，在患者可以独立站位平衡，患腿持重达体重的一半以上，才能开始步行训练。但由于老年人易出现废用综合征，有的患者靠静态站立持重改善缓慢，故某些患者步行训练可适当提早进行，必要时使用下肢支具。</p>
+    </div>
+</div>
+</body>
+</html>

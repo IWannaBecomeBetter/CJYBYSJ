@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="  
+       http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+       http://www.springframework.org/schema/mvc   
+       http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+       http://www.springframework.org/schema/context  
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<!-- 自动扫描与装配bean -->
+	<context:component-scan base-package="com.bs.controller"></context:component-scan>
+
+	<!-- 通过注解，把URL映射到Controller上，该标签默认注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
+	<mvc:annotation-driven />
+	<mvc:cors>
+		<mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800" allowed-methods="GET,POST,OPTIONS"/>
+	</mvc:cors>
+	<mvc:resources mapping="/static/**" location="/static/" />
+
+	<!-- 统一异常捕获 -->
+	<!--<bean id="exceptionResolver"-->
+		<!--class="com.wisdom.common.exception.CustomSimpleMappingExceptionResolver">-->
+		<!--<property name="exceptionMappings">-->
+			<!--<props>-->
+				<!--<prop key="java.lang.Exception">error/500</prop>-->
+			<!--</props>-->
+		<!--</property>-->
+	<!--</bean>-->
+
+	 <!--拦截器-->
+	<!--<mvc:interceptors>-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/**" />-->
+			<!--<bean class="com.wisdom.controller.common.interceptor.LoginInterceptor" />-->
+		<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+
+	<!-- 支持返回json(避免IE在ajax请求时，返回json出现下载 ) -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="mappingJacksonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/plain;charset=UTF-8</value>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 文件上传 -->
+	<bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:defaultEncoding="utf-8">
+        <property name="maxUploadSize">   
+            <value>4294967296</value>
+        </property>   
+        <property name="maxInMemorySize">   
+            <value>10240</value>
+        </property>
+    </bean>
+
+	<!-- 配置velocity引擎 -->
+	<bean id="velocityConfigurer"
+		  class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/templates/" /><!-- 模板存放的路径 -->
+		<property name="configLocation" value="classpath:velocity.properties" />
+	</bean>
+
+	<!-- 配置视图的显示 -->
+	<bean id="ViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="prefix" value="/" /><!-- 视图文件的前缀，即存放的路径 -->
+		<property name="suffix" value=".vm" /><!-- 视图文件的后缀名 -->
+		<property name="toolboxConfigLocation" value="/WEB-INF/tools.xml" /><!--toolbox配置文件路径-->
+		<property name="dateToolAttribute" value="date" /><!--日期函数名称-->
+		<property name="numberToolAttribute" value="number" /><!--数字函数名称-->
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持-->
+		<property name="exposeRequestAttributes" value="true" /><!--是否开放request属性-->
+		<property name="requestContextAttribute" value="rc"/><!--request属性引用名称-->
+		<property name="layoutUrl" value="layout.vm"/><!--指定layout文件-->
+	</bean>
+</beans>

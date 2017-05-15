@@ -1,0 +1,17 @@
+#set($layout = 'error/error_layout.vm')
+#parse("sys_param.vm")
+<section id="wrapper" class="error-page">
+    <div class="row-fluid">
+        <div class="http-error">
+            <div class="http-error-message">
+                <div class="error-caption">
+                    <p>Oops!</p>
+                </div>
+                <div class="error-message">
+                    <p>Something happened that we didn't expect.<p>
+                    <p class="return-home"><a href="$!{CONTEXT_PATH}/manager_index">返回主页</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

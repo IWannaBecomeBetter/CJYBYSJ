@@ -1,0 +1,35 @@
+<!-- 顶部菜单 -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav pull-right">
+
+            <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">设置</a></li>
+            <li id="fat-menu" class="dropdown">
+                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-user"></i> 管理员
+                    <i class="icon-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">我的账户</a></li>
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" class="visible-phone" href="#">设置</a></li>
+                    <li class="divider visible-phone"></li>
+                    <li><a tabindex="-1" onclick="logout()">退出</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <a class="brand" href="manager_index.vm"><span class="first">CJY</span> <span class="second">居家康复服务平台</span></a>
+    </div>
+</div>
+<script>
+    function logout() {
+        showConfirmAlert("确认退出系统?",'',function () {
+            var url = base + '/logout';
+            doAjaxPost(url, '', function (data) {
+                gotoPage('login');
+            });
+        },null,null,null,null,'warning');
+    };
+</script>

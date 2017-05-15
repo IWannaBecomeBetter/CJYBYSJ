@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="ui-page-register">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>居家康复康复师端</title>
+    #parse("sys_param.vm")
+    #parse("addon/css.vm")
+    #parse("addon/javascript.vm")
+    <style>
+        .mui-input-row{
+            margin: 15px 15px;
+            height: 50px;
+        }
+        .reg-content{
+            padding: 20px 0;
+        }
+        .mui-input-row input{
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="go-back" href="javascript:history.go(-1);"><span class="mui-icon mui-icon-back"></span></a>
+    <h1 class="mui-title">注册</h1>
+</header>
+
+<div class="mui-content">
+    <form id='registerForm' class="reg-content">
+        <div class="mui-input-row">
+            <input id='name' name="name" type="text" class="mui-input-clear mui-input" placeholder="名称">
+        </div>
+        <div class="mui-input-row">
+            <input id='telephone' name="telephone" type="text" class="mui-input-clear mui-input" placeholder="手机号">
+        </div>
+        <div class="mui-input-row" style="overflow:hidden;">
+            <div style="width: 40%;float: left">
+                <div class="reg-row-border"><input type="text" id="checkcode" placeholder="图片验证码" name="checkcode"/></div>
+            </div>
+            <div style="width: 60%;float: left" onclick="reloadCode()">
+                <div style="width: 60%;float: left;height: 41px;"><canvas style="width: 100%;height: 100%;border: solid" id="verifyCanvas"></canvas></div>
+                <div style="width: 40%;float: right;line-height: 40px;">&nbsp;点击刷新</div>
+            </div>
+            <input hidden id="realCode" value="">
+        </div>
+
+        <div class="mui-input-row" >
+            <input type="password" class="mui-input-password" id="pass" name="password" placeholder="输入新密码"/>
+        </div>
+        <div class="mui-input-row">
+            <input type="password" class="mui-input-password" id="repass" placeholder="重复密码"/>
+        </div>
+        <div style="margin: 20px">
+            <input id="agree" name="agree" type="checkbox"/>
+            <label for="agree">&nbsp;&nbsp;我已阅读并同意</label>&lt;<a href="$!{CONTEXT_PATH}/rule">用户注册协议</a>&gt;
+        </div>
+
+    </form>
+    <div class="mui-content-padded" >
+        <button id='register' style="border-radius: 15px" type="button" class="mui-btn mui-btn-block mui-btn-primary">立即注册</button>
+    </div>
+</div>
+</body>
+</html>
+<script src="$!{CONTEXT_PATH}/static/javascript/treat/code.js"></script>
+<script src="$!{CONTEXT_PATH}/static/javascript/treat/register.js"></script>
